@@ -1,14 +1,40 @@
-\# Meu guia de git e GitHub
+==========================================================================================================
+
+&#x20;                                        Meu guia de git e GitHub
+
+==========================================================================================================
 
 
 
-* Bash
+Índice
 
 
 
-\---Navegação---
+1. Bash
+2. Git
+3. Conceitos
+4. Nomes do GitHub 
+5. Git Flow
+6. Fluxos
+7. Estrutura de Projetos
+8. Arquivos Especiais
+9. Convenções
+10. Erros Comuns
+11. Analogias
+12. Cheat Sheet
+13. Perguntas e Respostas 
 
 
+
+==========================================================================================================
+
+1. &#x20;                                             Bash
+
+==========================================================================================================
+
+
+
+\---Navegação ---
 
 * pwd -> mostra em que pasta eu estou
 * ls -> mostra os arquivos da pasta
@@ -25,15 +51,18 @@
 * mkdir -> criar uma pasta
 * touch -> criar um arquivo tipo README.md
 * rm -> apaga \*\*\*\*cuidado
-* rm -rf apaga todas as pastas do git pasta e subpasta \*\*\*\*cuidado pode apagar todos os arquivos do windows
+* rm -rf apaga todas as pastas do git pasta e subpasta \*\*\*\*cuidado pode apagar todos os arquivos do Windows
+* nano -> editor de texto do terminal integrado nele
 
 
 
 
 
-* Git
+==========================================================================================================
 
+2\.                                               Comandos Git
 
+==========================================================================================================
 
 
 
@@ -50,7 +79,18 @@ Exem: git init .
 \--- Configuração ---
 
 * git config --global user.name -> congifurar um user name
+
+Quando usar? na primeira vez para definir um user name 
+
+Exem: git config --global user.name bruna
+
+
+
 * git config --global user.email -> configurar um email
+
+Quando usar? na primeira vez para definir um email
+
+Exem: git config --global user.email bruna@gmail.com
 
 
 
@@ -292,15 +332,25 @@ Exem: git fetch
 
 * git ls-file -> ver arquivos que estão sendo versionados pelo git
 
-Quando usar ? para ver qual arquivo faz parte do repositório 
+Quando usar ? para ver qual arquivo faz parte do repositório
 
 Exem: git ls-file
 
 
 
-* git clone -> faz clone de um repositório do GitHub para o pc usado no fork
+* git clone -> faz clone de um repositório do GitHub para o pc 
+
+Quando usar? para fazer uma copia do projeto do GitHub para o pc
+
+Exem: git clone url
 
 
+
+==========================================================================================================
+
+3\.                                              Conceitos
+
+==========================================================================================================
 
 
 
@@ -358,19 +408,19 @@ analogia: uma missão secundaria derivada da historia principal missão derivada
 
 \--- Main ---
 
-o que é? branch principal do projeto
+o que é? branch principal do projeto versão estável do projeto
 
 
 
 \--- develop ---
 
-o que é? branch onde os funções são salvas e testadas antes de ir para a main deixando a main protegida
+o que é? branch onde os funções são salvas e testadas antes de ir para a main deixando a main protegida estão em desenvolvimento 
 
 
 
 \--- Merge ---
 
-o que é? união do histórico de 2 branch misturando as funções 
+o que é? união do histórico de 2 branch misturando as funções
 
 
 
@@ -396,7 +446,7 @@ o que é? área temporária onde ficam os arquivos preparados para o próximo co
 
 \--- Untracted ---
 
-o que é? arquivo que o git ainda não monitoria 
+o que é? arquivo que o git ainda não monitoria
 
 
 
@@ -406,19 +456,895 @@ o que é? arquivo que já esta sendo monitorado pelo git
 
 
 
+==========================================================================================================
 
+4\.                                         Nomes que aparecem no GitHub
+
+==========================================================================================================
+
+
+
+\--- Fork ---
+
+O que é? criar uma copia de um repositório na sua conta do GitHub uma copia do projeto do de uma pessoa GitHub para o seu
+
+
+
+\--- Pull Request ---
+
+O que é? pedir para que suas mudanças sejam analisadas e integradas ao projeto
+
+
+
+\--- Compare e pull Request ---
+
+O que é? fazer a criação de um pull request para comparar 2 branch
+
+
+
+\--- Merge Pull Request ---
+
+O que é? aceitar e integrar as alterações do pull request
+
+
+
+\--- Sync Fork ---
+
+O que é? atualizar seu fork com as alterações do repositório original
+
+
+
+\--- Collaborators ---
+
+O que é? para adicionar uma pessoa para colaborar no projeto 
+
+é só ir em settings e collaborators e adicionar a pessoa
+
+
+
+==========================================================================================================
+
+5\.                                              Git Flow
+
+==========================================================================================================
+
+
+
+O que é? O Git Flow é uma forma organizada de usar as branches do Git em um projeto. Ele define onde desenvolver, onde testar e quando publicar as alterações.
+
+
+
+&#x20;            main
+
+&#x20;              ▲
+
+&#x20;              │
+
+&#x20;       Merge aprovado
+
+&#x20;              │
+
+&#x20;           develop
+
+&#x20;        ▲    ▲    ▲
+
+&#x20;        │    │    │
+
+&#x20;    feat/  fix/ docs/
+
+
+
+main
+
+
+
+↓
+
+
+
+Criar develop
+
+
+
+↓
+
+
+
+Criar uma branch (feat, fix, docs...)
+
+
+
+↓
+
+
+
+Desenvolver
+
+
+
+↓
+
+
+
+git add
+
+
+
+↓
+
+
+
+git commit
+
+
+
+↓
+
+
+
+git push
+
+
+
+↓
+
+
+
+Pull Request
+
+
+
+↓
+
+
+
+Merge na develop
+
+
+
+↓
+
+
+
+Testes
+
+
+
+↓
+
+
+
+Merge na main
+
+
+
+main → versão estável do projeto.
+
+develop → reúne todas as funcionalidades em desenvolvimento.
+
+feat/ → novas funcionalidades.
+
+fix/ → correção de bugs.
+
+docs/ → documentação.
+
+Quando todas as alterações estiverem prontas e testadas, a develop é unida à main.
+
+
+
+Feature (feat/) → novas funcionalidades.
+
+Fix (fix/) → correções de bugs.
+
+Docs (docs/) → documentação.
+
+Chore (chore/) → tarefas de manutenção.
+
+Release (release/) → preparação de uma nova versão.
+
+Hotfix (hotfix/) → correções urgentes na versão em produção.
+
+
+
+==========================================================================================================
+
+6\.                                              Fluxos
+
+==========================================================================================================
+
+
+
+\*\*\* Fluxo normal do Git e GitHub \*\*\*
+
+
+
+Criar projeto
+
+
+
+↓
+
+
+
+git init
+
+
+
+↓
+
+
+
+Criar/editar arquivos
+
+
+
+↓
+
+
+
+git status
+
+
+
+↓
+
+
+
+git add
+
+
+
+↓
+
+
+
+git commit
+
+
+
+↓
+
+
+
+git push
+
+
+
+↓
+
+
+
+GitHub
+
+
+
+↓
+
+
+
+(outra pessoa altera)
+
+
+
+↓
+
+
+
+git pull
+
+
+
+↓
+
+
+
+Continuar trabalhando
+
+
+
+Você trabalha no computador (Git Local).
+
+Faz commits para salvar versões.
+
+Usa git push para enviar ao GitHub.
+
+Usa git pull para baixar as alterações feitas no GitHub.
+
+
+
+\*\*\* Fluxo de trabalho em equipe \*\*\*
+
+
+
+main
+
+
+
+↓
+
+
+
+develop
+
+
+
+↓
+
+
+
+Criar uma branch
+
+
+
+↓
+
+
+
+Editar arquivos
+
+
+
+↓
+
+
+
+git add
+
+
+
+↓
+
+
+
+git commit
+
+
+
+↓
+
+
+
+git push
+
+
+
+↓
+
+
+
+Pull Request
+
+
+
+↓
+
+
+
+Revisão
+
+
+
+↓
+
+
+
+Merge na develop
+
+
+
+↓
+
+
+
+Testes
+
+
+
+↓
+
+
+
+Merge na main
+
+
+
+Ninguém desenvolve diretamente na main.
+
+Cada pessoa cria sua própria branch.
+
+Depois abre um Pull Request.
+
+Após aprovação, a branch é unida à develop.
+
+Quando tudo estiver pronto, a develop é unida à main.
+
+
+
+\*\*\* Fluxo para resolver conflito \*\*\*
+
+
+
+main
+
+Leite
+
+
+
+pessoa a altera:
+
+Margarina
+
+
+
+pessoa b altera:
+
+Açúcar
+
+
+
+ao fazer o merge:
+
+git merge minha\_branch
+
+
+
+o git mostra:
+
+<<<<<<< HEAD
+
+Margarina
+
+=======
+
+Açúcar
+
+>>>>>>> minha\_branch
+
+
+
+git merge
+
+
+
+↓
+
+
+
+Conflito
+
+
+
+↓
+
+
+
+Editar o arquivo manualmente
+
+
+
+↓
+
+
+
+Apagar os marcadores
+
+
+
+↓
+
+
+
+Salvar o arquivo
+
+
+
+↓
+
+
+
+git add
+
+
+
+↓
+
+
+
+git commit
+
+
+
+↓
+
+
+
+Conflito resolvido
+
+
+
+O conflito acontece quando duas branches alteram a mesma linha.
+
+O Git para o merge.
+
+Você escolhe manualmente qual versão ficará.
+
+Depois faz git add e git commit.
+
+
+
+==========================================================================================================
+
+7\.                                            Estrutura de projetos
+
+==========================================================================================================
+
+
+
+src/
+
+
+
+docs/
+
+
+
+tests/
+
+
+
+assets/
+
+
+
+data/
+
+
+
+README.md
+
+
+
+==========================================================================================================
+
+8\.                                             Arquivos Especiasis
+
+==========================================================================================================
+
+.git
+
+
+
+.gitignore
+
+
+
+.gitkeep
+
+
+
+README.md
+
+
+
+==========================================================================================================
+
+9\.                                              Convenções 
+
+==========================================================================================================
+
+\--- Branches ---
+
+
+
+feat/
+
+
+
+fix/
+
+
+
+docs/
+
+
+
+test/
+
+
+
+refactor/
+
+
+
+release/
+
+
+
+hotfix/
+
+
+
+chore/
+
+
+
+\--- Commits ---
+
+
+
+feat:
+
+
+
+fix:
+
+
+
+docs:
+
+
+
+test:
+
+
+
+refactor:
+
+
+
+chore:
+
+
+
+==========================================================================================================
+
+10\.                                              Erros Comuns
+
+==========================================================================================================
+
+
+
+src refspec does not match any -> git não encontrou a branch ou ela ainda não tem commits
+
+Quando acontece? escrever o nome da branch errado, ainda não foi criada, não tem commits na branch
+
+Resolver? git branch ou criar uma branch git checkout -b nomebranch
+
+permission denied
+
+
+
+permission denied -> Você não tem permissão para enviar alterações para aquele repositório.
+
+Quando acontece?
+
+Está usando a conta GitHub errada.
+
+O repositório pertence a outra pessoa.
+
+Você não é colaborador.
+
+Problemas com autenticação (HTTP ou SSH).
+
+Resolver? git remote -v
+
+
+
+Already up to date -> repositório já esta atualizado
+
+Quando acontece? após dar git pull ou git merge
+
+
+
+Merge conflict -> alterações diferentes na mesma linha do arquivo e não sabe qual escolher
+
+Quando acontece -> 2 branches modificam a mesma linha
+
+Como resolver?
+
+Abrir o arquivo.
+
+Escolher a versão correta.
+
+Remover os marcadores:
+
+<<<<<<< HEAD
+
+=======
+
+>>>>>>>
+
+Salvar.
+
+
+
+Depois:
+
+
+
+git add .
+
+git commit -m "resolve conflito"
+
+
+
+Detached HEAD -> O HEAD está apontando para um commit e não para uma branch.
+
+Quando acontece? git checkout 4fa38b2
+
+Como resolver? volte para uma branch
+
+
+
+fatal -> "Fatal" significa que ocorreu um erro grave e o Git interrompeu o comando.
+
+fatal: not a git repositor -> Você não está dentro de um repositório Git.
+
+fatal: pathspec did not match any files -> O arquivo informado não existe.
+
+
+
+nothing to commit -> Não existe nenhuma alteração para salvar em um novo commit.
+
+Quando acontece? depois de git status
+
+Como resolver? Edite algum arquivo primeiro.
+
+
+
+working tree clean -> O projeto está limpo. Todos os arquivos já foram commitados.
+
+Quando aparece? após git status
+
+Como resolver? Nada. Essa é uma boa mensagem.
+
+
+
+q -> digite q caso o terminal trave depois de algum comando geralmente quando da git log
+
+
+
+==========================================================================================================
+
+11\.                                              Analogias 
+
+==========================================================================================================
+
+Commit
+
+
+
+↓
+
+
+
+Save de um jogo
+
+
+
+Branch
+
+
+
+↓
+
+
+
+Missão secundária
+
+
+
+Merge
+
+
+
+↓
+
+
+
+Juntar histórias
 
 
 
 Fork
 
-Pull Request
 
-Compare e pull Request
 
-Merge Pull Request
+↓
 
-Sync Fork
 
-&#x20;
+
+Copiar um livro de receitas
+
+
+
+Clone
+
+
+
+↓
+
+
+
+Baixar esse livro para casa
+
+
+
+GitHub
+
+
+
+↓
+
+
+
+Nuvem
+
+
+
+Push
+
+
+
+↓
+
+
+
+Enviar
+
+
+
+Pull
+
+
+
+↓
+
+
+
+Receber
+
+
+
+==========================================================================================================
+
+12\.                                          Consulta rápida
+
+==========================================================================================================
+
+
+
+git status
+
+git add .
+
+git commit -m ""
+
+git push
+
+git pull
+
+git fetch
+
+git branch
+
+git checkout
+
+git checkout -b
+
+git merge
+
+git log --oneline
+
+git diff
+
+git reset
+
+
+
+
+
+
+
+
 
