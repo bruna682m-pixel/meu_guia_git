@@ -2,4 +2,4 @@
 
 Este é um guia de git e GitHub para eu lembrar depois como funciona
 
-com tudo que aprendi até agora 
+com tudo que aprendi até agora. 
