@@ -1,0 +1,1 @@
+guia completo no txt
